@@ -1,6 +1,6 @@
 <?php
 
-include('function/query.php');
+include('function/view-query.php');
 
 $data = getBarang();
 

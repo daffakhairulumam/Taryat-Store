@@ -1,6 +1,6 @@
 <?php
 
-include('function/query.php');
+include('function/view-query.php');
 
 $id = $_GET['id'];
 $response = getBarang($id);
