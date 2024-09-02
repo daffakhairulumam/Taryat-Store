@@ -2,15 +2,9 @@
 
 include('../../function/query.php');
 
-$id = $_POST['id'];
-$qty = $_POST['qty'];
+$id = $_GET['id'];
 
-$data = [
-    'id' => $id,
-    'qty' => $qty
-];
-
-if (deleteKeranjang($data)) {
+if (deleteKeranjang($id)) {
     header("location: ../../index.php?page=transaksi");
 } else {
     header("location: ../../index.php?page=transaksi&alert=gagal");

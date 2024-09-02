@@ -26,6 +26,31 @@ $data = mysqli_fetch_assoc($response);
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
+                        <?php
+                        if (isset($_GET['alert']) && $_GET['alert'] == 'gagal') { ?>
+                            <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+                                <h4 class="alert-heading">Gagal!</h4>
+                                <p>Data gagal ditambahkan.</p>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        <?php }
+
+                        if (isset($_GET['alert']) && $_GET['alert'] == 'gagal_ekstensi') { ?>
+                            <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+                                <h4 class="alert-heading">Gagal!</h4>
+                                <p>Ekstensi gambar tidak sesuai.</p>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        <?php }
+
+                        if (isset($_GET['alert']) && $_GET['alert'] == 'gagal_ukuran') { ?>
+                            <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+                                <h4 class="alert-heading">Gagal!</h4>
+                                <p>Ukuran gambar terlalu besar.</p>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        <?php }
+                        ?>
                         <h5 class="card-title">Edit Barang</h5>
 
                         <form action="logic/barang/update.php" method="post" enctype="multipart/form-data">

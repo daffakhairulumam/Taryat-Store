@@ -22,6 +22,23 @@ $CodeKategori = genereteCodeKategori();
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
+                        <?php
+                        if (isset($_GET['alert']) && $_GET['alert'] == 'gagal') { ?>
+                            <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+                                <h4 class="alert-heading">Gagal!</h4>
+                                <p>Data gagal ditambahkan.</p>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        <?php }
+
+                        if (isset($_GET['alert']) && $_GET['alert'] == 'nama kategori harus diisi') { ?>
+                            <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+                                <h4 class="alert-heading">Gagal!</h4>
+                                <p>Nama Kategori harus diisi.</p>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        <?php }
+                        ?>
                         <h5 class="card-title">Tambah Kategori</h5>
 
                         <form action="logic/kategori/save.php" method="post" class="">

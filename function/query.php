@@ -1,13 +1,13 @@
 <?php
 
-require_once('../../config.database.php');
+require_once('../../config/database.php');
 
-function saveKeranjang()
+function saveKeranjang($data)
 {
     $conn = connection();
 
-    $idTransaksi = $_POST['id_transaksi'];
-    $kodeBarang = $_POST['kode_barang'];
+    $idTransaksi = $data['id_transaksi'];
+    $kodeBarang = $data['kode_barang'];
 
     $queryBarang = "SELECT * FROM barang WHERE kode_barang = '$kodeBarang'";
     $resultBarang = mysqli_query($conn, $queryBarang);
@@ -33,7 +33,7 @@ function saveKeranjang()
         if ($barang['stock'] <= 0) {
             return false;
         } else {
-            $query = "INSERT INTO keranjang (id_transaksi, kode_barang, nama_barang, qty, total) VALUES ('$idTransaksi', '$kodeBarang', 1, '$harga')";
+            $query = "INSERT INTO keranjang (id_transaksi, kode_barang, qty, total) VALUES ('$idTransaksi', '$kodeBarang', 1, '$harga')";
             $result = mysqli_query($conn, $query);
 
             $queryUpdateBarang = "UPDATE barang SET stock = stock - 1 WHERE kode_barang = '$kodeBarang'";
@@ -61,7 +61,7 @@ function updateKeranjag($data)
     $dataKeranjang = mysqli_fetch_array($result);
     $kodeBarang = $dataKeranjang['kode_barang'];
 
-    $barang = "SELECT * FROM barang WHERE kode_baran = '$kodeBarang'";
+    $barang = "SELECT * FROM barang WHERE kode_barang = '$kodeBarang'";
     $resultBarang = mysqli_query($conn, $barang);
     $dataBarang = mysqli_fetch_array($resultBarang);
 
@@ -100,7 +100,7 @@ function deleteKeranjang($id)
     $queryUpdateBarang = "UPDATE barang SET stock = stock + $qty WHERE kode_barang = '$kodeBarang'";
     $resultUpdateBarang = mysqli_query($conn, $queryUpdateBarang);
 
-    $query = "DELETE FROM barang WHERE id = '$id'";
+    $query = "DELETE FROM keranjang WHERE id = '$id'";
     $result = mysqli_query($conn, $query);
 
     if ($result) {
@@ -115,7 +115,7 @@ function updateStock($kodeBarang, $qty)
 
     $conn = connection();
 
-    $query = "UPDATE barang SET stock - '$qty' WHERE kode_barang = '$kodeBarang'";
+    $query = "UPDATE barang SET stock = stock - '$qty' WHERE kode_barang = '$kodeBarang'";
     $result = mysqli_query($conn, $query);
 
     if ($result) {
@@ -133,12 +133,11 @@ function saveTransaksi($data)
     $idTransaksi = $data['id_transaksi'];
     $total = $_POST['total'];
     $bayar = $_POST['bayar'];
-    $kembalian = $_POST['kembalian'];
 
     $keranjang = "SELECT * FROM keranjang WHERE id_transaksi = '$idTransaksi'";
     $resultKeranjang = mysqli_query($conn, $keranjang);
 
-    $query = "INSERT INTO headtrans (id_transaksi, tanggal_transaksi, total, bayar, kembalian) VALUES ('$idTransaksi', 'now(), '$total', '$bayar', '$kembalian')";
+    $query = "INSERT INTO headtrans (id_transaksi, tanggal_transaksi, total, bayar) VALUES ('$idTransaksi', now(), '$total', '$bayar')";
     $result = mysqli_query($conn, $query);
 
     foreach ($resultKeranjang as $key => $value) {
@@ -147,7 +146,7 @@ function saveTransaksi($data)
         $kodeBarang = $value['kode_barang'];
         $subTotal = $value['total'];
 
-        $queryDetail = "INSERT INTO detailtrans (id_transaksi, kode_barang, qty, subtotal) VALUES ('$idTransaksi', '$kodeBarang', '$qty', '$subTotal')";
+        $queryDetail = "INSERT INTO detailtrans (id_transaksi, kode_barang, qty, total) VALUES ('$idTransaksi', '$kodeBarang', '$qty', '$subTotal')";
         $resultDetail = mysqli_query($conn, $queryDetail);
 
         if ($resultDetail) {

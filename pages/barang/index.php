@@ -23,6 +23,40 @@ $data = getBarang();
 
                 <div class="card">
                     <div class="card-body">
+                        <?php
+                        if (isset($_GET['alert']) && $_GET['alert'] == 'berhasil') { ?>
+                            <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+                                <h4 class="alert-heading">Berhasil!</h4>
+                                <p>Data berhasil ditambahkan.</p>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        <?php }
+
+                        if (isset($_GET['alert']) && $_GET['alert'] == 'berhasil_update') { ?>
+                            <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+                                <h4 class="alert-heading">Berhasil!</h4>
+                                <p>Data berhasil diupdate.</p>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        <?php }
+
+                        if (isset($_GET['alert']) && $_GET['alert'] == 'gagal_hapus') { ?>
+                            <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+                                <h4 class="alert-heading">Gagal!</h4>
+                                <p>Data gagal dihapus.</p>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        <?php }
+
+                        if (isset($_GET['alert']) && $_GET['alert'] == 'berhasil_hapus') { ?>
+                            <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+                                <h4 class="alert-heading">Berhasil!</h4>
+                                <p>Data berhasil dihapus.</p>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        <?php }
+                        ?>
+
                         <h5 class="card-title">Barang</h5>
 
                         <div class="text-end mb-3">
@@ -49,7 +83,11 @@ $data = getBarang();
                             </thead>
                             <tbody>
                                 <?php
-
+                                if (empty($data)) { ?>
+                                    <tr>
+                                        <td colspan="8" class="text-center">Tidak ada data</td>
+                                    </tr>
+                                <?php }
                                 foreach ($data as $key => $value) { ?>
                                     <tr>
                                         <td><?= $key + 1 ?></td>

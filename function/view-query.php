@@ -85,12 +85,12 @@ function genereteCodeTransaksi()
 }
 
 
-function getKeranjang($idTransaksi, $kodeBarang = null)
+function getKeranjang($idTransaksi, $codeBarang = null)
 {
     $conn = connection();
 
-    if ($kodeBarang) {
-        $query = "SELECT * FROM keranjang JOIN barang ON keranjang.kode_barang, = barang.kode_barang WHERE keranjang.kode_barang = '$kodeBarang' AND keranjang.id_transaksi = '$idTransaksi'";
+    if ($codeBarang) {
+        $query = "SELECT * FROM keranjang JOIN barang ON keranjang.kode_barang, = barang.kode_barang WHERE keranjang.kode_barang = '$codeBarang' AND keranjang.id_transaksi = '$idTransaksi'";
     } else {
         $query = "SELECT keranjang.*, barang.nama_barang, barang.harga, barang.images FROM keranjang JOIN barang ON keranjang.kode_barang = barang.kode_barang WHERE keranjang.id_transaksi = '$idTransaksi'";
     }

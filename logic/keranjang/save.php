@@ -3,11 +3,11 @@
 include('../../function/query.php');
 
 $idTransaksi = $_GET['id_transaksi'];
-$codeBarang = $_GET['kode_barang'];
+$kodeBarang = $_GET['kode_barang'];
 
 $data = [
     'id_transaksi' => $idTransaksi,
-    'kode_barang' => $codeBarang
+    'kode_barang' => $kodeBarang
 ];
 
 if (saveKeranjang($data)) {
