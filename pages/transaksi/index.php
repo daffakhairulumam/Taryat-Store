@@ -7,6 +7,14 @@ $idTransaksi = genereteCodeTransaksi();
 $keranjang = getKeranjang($idTransaksi);
 $kodeBarang = '';
 $total = 0;
+$idTransaksiPrevous = '';
+
+if (!empty($_GET['id_transaksi'])) {
+    $idTransaksiPrevous = $_GET['id_transaksi'];
+    $disabledCetak = '';
+} else {
+    $disabledCetak = 'disabled';
+}
 
 foreach ($keranjang as $key => $value) {
     $total += $value['total'];
@@ -152,6 +160,13 @@ if (isset($_GET['kode_barang'])) {
                             <div class="col-lg-3">
                                 <div class="input-group">
                                     <button class="btn btn-primary" type="button" onclick="bayar()" <?= $disabled ?>>Bayar</button>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 mt-2">
+                                <div class="input-group">
+                                    <a href="logic/transaksi/cetak.php?id_transaksi=<?= $idTransaksiPrevous ?>" target="_blank">
+                                        <button class="btn btn-primary" type="button" id="cetak-struk" <?= $disabledCetak ?>>Cetak Struk <?= $idTransaksiPrevous ?></button>
+                                    </a>
                                 </div>
                             </div>
                         </div>
