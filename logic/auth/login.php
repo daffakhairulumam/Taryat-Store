@@ -23,10 +23,10 @@ if (isset($_POST['submit'])) {
             header("location: ../../index.php");
         } else {
             echo "<script>alert('Password tidak sesuai')</script>";
-            header("location: ../../page/auth/login.php?error=Password tidak sesuai");
+            header("location: ../../pages/auth/login.php?error=Password tidak sesuai");
         }
     } else {
         echo "<script>alert('Akun tidak ditemukan')</script>";
-        header("location: ../../page/auth/login.php?error=Akun tidak ditemukan");
+        header("location: ../../pages/auth/login.php?error=Akun tidak ditemukan");
     }
 }
