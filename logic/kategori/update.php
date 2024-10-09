@@ -12,7 +12,7 @@ $sql = "UPDATE kategori SET kode_kategori = '$kodeKategori', nama_kategori = '$n
 $result = mysqli_query($conn, $sql);
 
 if ($result) {
-    header("Location: ../../index.php?page=kategori");
+    header("Location: ../../index.php?page=kategori&alert=berhasil update");
 } else {
-    echo "Error" . "<br>" . mysqli_error($conn);
+    header("Location: ../../index.php?page=kategori/edit&id=$id&alert=gagal");
 }

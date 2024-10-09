@@ -28,11 +28,11 @@ if (!in_array($ext, $ekstensi)) {
         $sql = "INSERT INTO barang (kode_kategori, kode_barang, nama_barang, stock, harga, images) VALUES ('$kodeKategori', '$kodeBarang', '$namaBarang', '$stock', '$harga', '$xx')";
 
         if (mysqli_query($conn, $sql)) {
-            header("Location: ../../index.php?page=barang");
+            header("Location: ../../index.php?page=barang&alert=berhasil");
         } else {
-            echo "Error" . "<br>" . mysqli_error($conn);
+            header("Location: ../../index.php?page=barang/create&alert=gagal");
         }
     } else {
-        header("Location: ../../index.php?page=barang/create");
+        header("Location: ../../index.php?page=barang/create&alert=gagal_ukuran");
     }
 }

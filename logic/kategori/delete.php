@@ -9,7 +9,7 @@ $id = $_GET['id'];
 $sql = "DELETE FROM kategori WHERE id = $id";
 
 if (mysqli_query($conn, $sql)) {
-    header("Location: ../../index.php?page=kategori");
+    header("Location: ../../index.php?page=kategori&alert=berhasil hapus");
 } else {
-    echo "Error" . $sql . "<br>" . mysqli_error($conn);
+    header("Location:../../index.php?page=kategori&alert=gagal hapus");
 }

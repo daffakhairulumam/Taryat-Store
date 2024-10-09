@@ -9,7 +9,7 @@ $id = $_GET['id'];
 $sql = "DELETE FROM barang WHERE id = $id";
 
 if (mysqli_query($conn, $sql)) {
-    header("Location: ../../index.php?page=barang");
+    header("Location: ../../index.php?page=barang&alert=berhasil_hapus");
 } else {
-    echo "Error" . $sql . "<br>" . mysqli_error($conn);
+    header("location: ../../index.php?page=barang&alert=gagal_hapus");
 }

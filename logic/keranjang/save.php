@@ -13,5 +13,5 @@ $data = [
 if (saveKeranjang($data)) {
     header("Location:../../index.php?page=transaksi&alert=berhasil&kode_barang=$codeBarang");
 } else {
-    header("Location:../../index.php?page=transaksi&alert = gagal");
+    header("Location:../../index.php?page=transaksi&alert=gagal");
 }

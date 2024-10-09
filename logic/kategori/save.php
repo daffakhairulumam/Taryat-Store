@@ -13,7 +13,7 @@ $sql = "INSERT INTO kategori (id, kode_kategori, nama_kategori) VALUES ('$id', '
 $result = mysqli_query($conn, $sql);
 
 if ($result) {
-    header("Location: ../../index.php?page=kategori");
+    header("Location: ../../index.php?page=kategori&alert=berhasil");
 } else {
-    echo "Error: " . "<br>" . mysqli_error($conn);
+    header("Location: ../../index.php?page=kategori&alert=gagal");
 }

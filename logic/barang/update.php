@@ -29,11 +29,11 @@ if (!in_array($ext, $ekstensi)) {
         $sql = "UPDATE barang SET kode_kategori = '$kode_kategori', kode_barang = '$kode_barang', nama_barang = '$namaBarang', stock = '$stock', harga = '$harga', images = '$xx' WHERE id = '$id'";
 
         if (mysqli_query($conn, $sql)) {
-            header("Location: ../../index.php?page=barang");
+            header("Location: ../../index.php?page=barang&alert=berhasil_update");
         } else {
-            echo "Error" . "<br>" . mysqli_error($conn);
+            header("location: ../../index.php?page=barang/edit&id=$id&alert=gagal");
         }
     } else {
-        header("Location: ../../index.php?page=barang/edit&id=$id");
+        header("Location: ../../index.php?page=barang/edit&id=$id&alert=gagal_ukuran");
     }
 }
