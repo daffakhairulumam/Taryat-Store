@@ -31,7 +31,7 @@ if ($page == 'laporan') {
       <a class="nav-link collapsed" data-bs-target="#master-nav" data-bs-toggle="collapse" href="#">
         <i class="bi bi-menu-button-wide"></i><span>Master</span><i class="bi bi-chevron-down ms-auto"></i>
       </a>
-      <ul id="master-nav" class="nav-content collapse <?php if ($page == 'kategori' || $page == 'barang') echo 'show' ?>" data-bs-parent="#sidebar-nav">
+      <ul id="master-nav" class="nav-content collapse <?php if ($page == 'kategori' || $page == 'barang' || $page == 'users') echo 'show' ?>" data-bs-parent="#sidebar-nav">
         <li>
           <a href="index.php?page=kategori" class="<?php if ($page == 'kategori') echo 'active' ?>">
             <i class="bi bi-circle"></i><span>Kategori</span>
@@ -40,6 +40,11 @@ if ($page == 'laporan') {
         <li>
           <a href="index.php?page=barang" class="<?php if ($page == 'barang') echo 'active' ?>">
             <i class="bi bi-circle"></i><span>Barang</span>
+          </a>
+        </li>
+        <li>
+          <a href="index.php?page=users" class="<?php if ($page == 'users') echo 'active' ?>">
+            <i class="bi bi-circle"></i><span>Users</span>
           </a>
         </li>
       </ul>

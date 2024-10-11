@@ -55,12 +55,12 @@ $data = mysqli_fetch_array($result);
                             </div>
 
                             <div class="form-group mb-3">
-                                <label>Kode Mobil</label>
+                                <label>Kode Kategori</label>
                                 <input type="text" name="kode_kategori" placeholder="Input Kode Kategori" class="form-control" value="<?= $data['kode_kategori'] ?>">
                             </div>
 
                             <div class="form-group mb-3">
-                                <label>No_Polisi</label>
+                                <label>Nama Kategori</label>
                                 <input type="text" name="nama_kategori" placeholder="Input Nama Kategori" class="form-control" value="<?= $data['nama_kategori'] ?>">
                             </div>
 
