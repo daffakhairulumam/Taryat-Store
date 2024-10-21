@@ -1,19 +1,11 @@
-<?php
-
-include('function/view-query.php');
-
-$CodeBarang = genereteCodeBarang();
-$categoryOptions = getCategory(null);
-
-?>
 <main id="main" class="main">
     <div class="pagetitle">
-        <h1>Tambah Mobil</h1>
+        <h1>Tambah Users</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="../dashboard">Home</a></li>
-                <li class="breadcrumb-item"><a href="index.php?page=barang">Barang</a></li>
-                <li class="breadcrumb-item active">Tambah Barang</li>
+                <li class="breadcrumb-item"><a href="index.php?page=mobil">Users</a></li>
+                <li class="breadcrumb-item active">Tambah Users</li>
             </ol>
         </nav>
     </div><!--end page title-->
@@ -23,74 +15,36 @@ $categoryOptions = getCategory(null);
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <?php
-                        if (isset($_GET['alert']) && $_GET['alert'] == 'gagal') { ?>
-                            <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
-                                <h4 class="alert-heading">Gagal!</h4>
-                                <p>Data gagal ditambahkan.</p>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        <?php }
+                        <h5 class="card-title">Tambah Users</h5>
 
-                        if (isset($_GET['alert']) && $_GET['alert'] == 'gagal_ekstensi') { ?>
-                            <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
-                                <h4 class="alert-heading">Gagal!</h4>
-                                <p>Ekstensi gambar harus PNG, JPG, JPEG.</p>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        <?php }
-
-                        if (isset($_GET['alert']) && $_GET['alert'] == 'gagal_ukuran') { ?>
-                            <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
-                                <h4 class="alert-heading">Gagal!</h4>
-                                <p>Ukuran gambar terlalu besar.</p>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        <?php }
-                        ?>
-                        <h5 class="card-title">Tambah Barang</h5>
-
-                        <form action="logic/barang/save.php" method="post" class="" enctype="multipart/form-data">
+                        <form action="logic/users/save.php" method="post">
 
                             <div class="form-group mb-3">
-                                <input type="hidden" name="id" placeholder="Input ID" class="form-control">
+                                <input type="hidden" name="id" class="form-control">
                             </div>
 
                             <div class="form-group mb-3">
-                                <label>Kode Barang</label>
-                                <input type="text" name="kode_barang" placeholder="Input Kode Barang" class="form-control" value="<?= $CodeBarang ?>">
+                                <label>Nama</label>
+                                <input type="text" name="nama" placeholder="Input Nama" class="form-control">
                             </div>
 
                             <div class="form-group mb-3">
-                                <label>Nama Barang</label>
-                                <input type="text" name="nama_barang" placeholder="Input Nama Barang" class="form-control">
+                                <label>Username</label>
+                                <input type="text" name="username" placeholder="Input Username" class="form-control">
                             </div>
 
                             <div class="form-group mb-3">
-                                <label>Kategori</label>
-                                <select name="kode_kategori" class="form-control" required>
-                                    <option value="">-- Pilih Kategori --</option>
-                                    <?php
-                                    foreach ($categoryOptions as $category) { ?>
-                                        <option value="<?= $category['kode_kategori']; ?>"><?= $category['nama_kategori']; ?></option>
-                                    <?php }
-                                    ?>
+                                <label>Passwoard</label>
+                                <input type="password" name="password" placeholder="Input Password" class="form-control">
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label>Hak Akses</label>
+                                <select class="form-control" name="hak">
+                                    <option>--Pilih--</option>
+                                    <option value="Admin">Admin</option>
+                                    <option value="Petugas">Petugas</option>
                                 </select>
-                            </div>
-
-                            <div class="form-group mb-3">
-                                <label>Stock</label>
-                                <input type="text" name="stock" placeholder="Input Stock" class="form-control">
-                            </div>
-
-                            <div class="form-group mb-3">
-                                <label>Harga</label>
-                                <input type="text" name="harga" placeholder="Input Harga" class="form-control">
-                            </div>
-
-                            <div class="form-group mb-3">
-                                <label>Gambar</label>
-                                <input type="file" name="image" class="form-control">
                             </div>
 
                             <hr>

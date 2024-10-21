@@ -308,36 +308,36 @@ if (isset($_GET['kode_barang'])) {
         $('#id').val(id);
     }
 
-    // function kembalian() {
-    //     var bayar = $('#bayar').val();
-    //     var total = $('#total').val();
+    function kembalian() {
+        var bayar = $('#bayar').val();
+        var total = $('#total').val();
 
-    //     var kembalian = bayar - total;
+        var kembalian = bayar - total;
 
-    //     $('#kembalian').val(kembalian);
-    // }
+        $('#kembalian').val(kembalian);
+    }
 
-    // function bayar() {
-    //     var bayar = $('#bayar').val();
-    //     var total = $('#total').val();
-    //     var idTransaksi = $('#id_transaksi').val();
+    function bayar() {
+        var bayar = $('#bayar').val();
+        var total = $('#total').val();
+        var idTransaksi = $('#id_transaksi').val();
 
-    //     var kembalian = bayar - total;
+        var kembalian = bayar - total;
 
-    //     if (total < 0) {
-    //         alert('Total Belanja Harus Lebih Besar dari 0');
+        if (total < 0) {
+            alert('Total Belanja Harus Lebih Besar dari 0');
 
-    //         return false;
-    //     }
+            return false;
+        }
 
-    //     if (kembalian < 0) {
-    //         alert('Uang Anda Kurang');
-    //     } else {
-    //         $('#modalBayar').modal('show');
-    //         $('#id_transaksi2').val(idTransaksi);
-    //         $('#total2').val(total);
-    //         $('#bayar2').val(bayar);
-    //         $('#kembalian2').val(kembalian);
-    //     }
-    // }
+        if (kembalian < 0) {
+            alert('Uang Anda Kurang');
+        } else {
+            $('#modalBayar').modal('show');
+            $('#id_transaksi2').val(idTransaksi);
+            $('#total2').val(total);
+            $('#bayar2').val(bayar);
+            $('#kembalian2').val(kembalian);
+        }
+    }
 </script>

@@ -99,18 +99,18 @@ function getKeranjang($idTransaksi, $codeBarang = null)
     return $result;
 }
 
-// function getTransaksi($idTransaksi = null)
-// {
+function getTransaksi($idTransaksi = null)
+{
 
-//     $conn = connection();
+    $conn = connection();   
 
-//     if ($idTransaksi) {
-//         $query = "SELECT detailtrans.*, barang.nama_barang, barang.harga, kategori.nama_kategori, headtrans.total as total_transaksi, headtrans.total_bayar FROM detailtrans JOIN headtrans ON detailtrans.id_transaksi = headtrans.id_transaksi JOIN barang ON detailtrans.kode_barang = barang.kode_barang JOIN kategori ON barang.kode_kategori = kategori.kode_kategori WHERE detailtrans.id_transaksi = '$idTransaksi' ORDER BY detailtrans.kode_barang ASC";
-//     } else {
-//         $query = "SELECT * FROM headtrans";
-//     }
+    if ($idTransaksi) {
+        $query = "SELECT detailtrans.*, barang.nama_barang, barang.harga, kategori.nama_kategori, headtrans.total as total_transaksi, headtrans.total_bayar FROM detailtrans JOIN headtrans ON detailtrans.id_transaksi = headtrans.id_transaksi JOIN barang ON detailtrans.kode_barang = barang.kode_barang JOIN kategori ON barang.kode_kategori = kategori.kode_kategori WHERE detailtrans.id_transaksi = '$idTransaksi' ORDER BY detailtrans.kode_barang ASC";
+    } else {
+        $query = "SELECT * FROM headtrans";
+    }
 
-//     $result = mysqli_query($conn, $query);
+    $result = mysqli_query($conn, $query);
 
-//     return $result;
-// }
+    return $result;
+}

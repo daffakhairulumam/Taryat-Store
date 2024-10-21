@@ -19,7 +19,7 @@ $ukuran = $_FILES['image']['size'];
 $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
 if (!in_array($ext, $ekstensi)) {
-    header("Location: ../../index.php?page=barang/create");
+    header("Location: ../../index.php?page=barang/create&alert=gagal_ektesnsi");
 } else {
     if ($ukuran < 1044070) {
         $xx = $rand . '_' . $filename;

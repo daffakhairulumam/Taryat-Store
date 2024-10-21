@@ -19,6 +19,7 @@ if (isset($_POST['submit'])) {
             $_SESSION['login'] = true;
             $_SESSION['username'] = $data['username'];
             $_SESSION['nama'] = $data['nama'];
+            $_SESSION['hak'] = $data['hak'];
 
             header("location: ../../index.php");
         } else {

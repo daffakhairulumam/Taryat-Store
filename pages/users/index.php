@@ -1,16 +1,11 @@
-<?php
-include_once('database.php');
-
-
-?>
 <main id="main" class="main">
 
     <div class="pagetitle">
-        <h1>Barang</h1>
+        <h1>Mobil</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item active">Barang</li>
+                <li class="breadcrumb-item active">Users</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -54,11 +49,10 @@ include_once('database.php');
                             </div>
                         <?php }
                         ?>
-
-                        <h5 class="card-title">Barang</h5>
+                        <h5 class="card-title">Users</h5>
 
                         <div class="text-end mb-3">
-                            <a href="index.php?page=barang/create">
+                            <a href="index.php?page=users/create">
                                 <button type="button" class="btn btn-primary">
                                     Tambah
                                 </button>
@@ -66,37 +60,41 @@ include_once('database.php');
                         </div>
 
                         <!-- Table with stripped rows -->
-                        <table id="table-barang">
+                        <table id="table-user">
                             <thead>
                                 <tr>
-                                    <th>No.</th>
+                                    <th>ID</th>
                                     <th>Nama</th>
                                     <th>Username</th>
+                                    <th>Hak</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                // inc
+
+                                include_once './config/database.php';
+
+                                $conn = connection();
+
+                                $sql = 'SELECT * FROM users';
+
+                                $data = mysqli_query($conn, $sql);
+
                                 foreach ($data as $key => $value) { ?>
                                     <tr>
                                         <td><?= $key + 1 ?></td>
-                                        <td><?= $value['kode_barang'] ?></td>
-                                        <td><?= $value['nama_barang'] ?></td>
-                                        <td><?= $value['nama_kategori'] ?></td>
-                                        <td><?= $value['stock'] ?></td>
-                                        <td><?= $value['harga'] ?></td>
+                                        <td><?= $value['nama'] ?></td>
+                                        <td><?= $value['username'] ?></td>
+                                        <td><?= $value['hak'] ?></td>
                                         <td>
-                                            <img src="public/img/product/<?= $value['images'] ?>" width="50px">
-                                        </td>
-                                        <td>
-                                            <a href="index.php?page=barang/edit&id=<?= $value['id'] ?>">
+                                            <a href="index.php?page=users/edit&id=<?= $value['id'] ?>">
                                                 <button type="button" class="btn btn-primary">
                                                     Edit
                                                 </button>
                                             </a>
-                                            <a href="logic/barang/delete.php?id=<?= $value['id'] ?>" onclick="javascript:return confirm('Hapus Data Barang ?');">
-                                                <button type="button" class="btn btn-danger">
+                                            <a href="logic/users/delete.php?id=<?= $value['id'] ?>" onclick="javascript:return confirm('Hapus Data Barang ?');">
+                                                <button type="button" class="btn btn-primary">
                                                     Hapus
                                                 </button>
                                             </a>
@@ -119,6 +117,6 @@ include_once('database.php');
 
 <script>
     $(document).ready(function() {
-        $('#table-barang').DataTable();
+        $('#table-user').DataTable();
     })
 </script>

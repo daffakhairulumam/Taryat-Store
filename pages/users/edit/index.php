@@ -1,22 +1,26 @@
 <?php
 
-include('function/view-query.php');
+include_once('config/database.php');
+
+$conn = connection();
 
 $id = $_GET['id'];
-$response = getBarang($id);
-$categoryOptions = getCategory(null);
-$data = mysqli_fetch_assoc($response);
 
+$sql = "SELECT * FROM users WHERE id = $id";
+
+$result = mysqli_query($conn, $sql);
+
+$data = mysqli_fetch_array($result);
 ?>
 
 <main id="main" class="main">
     <div class="pagetitle">
-        <h1>Edit Barang</h1>
+        <h1>Tambah Users</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="../dashboard/">Home</a></li>
-                <li class="breadcrumb-item"><a href="index.php">Barang</a></li>
-                <li class="breadcrumb-item active">Edit Barang</li>
+                <li class="breadcrumb-item"><a href="index.php">Users</a></li>
+                <li class="breadcrumb-item active">Tambah Users</li>
             </ol>
         </nav>
     </div><!--end page title-->
@@ -26,71 +30,36 @@ $data = mysqli_fetch_assoc($response);
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <?php
-                        if (isset($_GET['alert']) && $_GET['alert'] == 'gagal') { ?>
-                            <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
-                                <h4 class="alert-heading">Gagal!</h4>
-                                <p>Data gagal ditambahkan.</p>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        <?php }
+                        <h5 class="card-title">Tambah Users</h5>
 
-                        if (isset($_GET['alert']) && $_GET['alert'] == 'gagal_ekstensi') { ?>
-                            <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
-                                <h4 class="alert-heading">Gagal!</h4>
-                                <p>Ekstensi gambar tidak sesuai.</p>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        <?php }
+                        <form action="logic/users/update.php" method="post">
 
-                        if (isset($_GET['alert']) && $_GET['alert'] == 'gagal_ukuran') { ?>
-                            <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
-                                <h4 class="alert-heading">Gagal!</h4>
-                                <p>Ukuran gambar terlalu besar.</p>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        <?php }
-                        ?>
-                        <h5 class="card-title">Edit Barang</h5>
-
-                        <form action="logic/barang/update.php" method="post" enctype="multipart/form-data">
                             <div class="form-group mb-3">
                                 <input type="hidden" name="id" value="<?= $id ?>">
                             </div>
 
                             <div class="form-group mb-3">
-                                <label>Kode Barang</label>
-                                <input type="text" name="kode_barang" placeholder="Input Kode Barang" class="form-control" value="<?= $data['kode_barang'] ?>">
+                                <label>Nama</label>
+                                <input type="text" name="nama" placeholder="Input Nama" class="form-control" value="<?= $data['nama'] ?>">
                             </div>
 
                             <div class="form-group mb-3">
-                                <label>Nama Barang</label>
-                                <input type="text" name="nama_barang" placeholder="Input Nama Barang" class="form-control" value="<?= $data['nama_barang'] ?>">
+                                <label>Username</label>
+                                <input type="text" name="username" placeholder="Input Username" class="form-control" value="<?= $data['username'] ?>">
                             </div>
 
                             <div class="form-group mb-3">
-                                <label>Kategori</label>
-                                <select name="kode_kategori" class="form-select">
-                                    <option value="<?= $data['kode_kategori']; ?>"><?= $data['nama_kategori']; ?></option>
-                                    <?php foreach ($categoryOptions as $option) { ?>
-                                        <option value="<?= $option['kode_kategori']; ?>"><?= $option['nama_kategori']; ?></option>
-                                    <?php } ?>
+                                <label>Passwoard</label>
+                                <input type="password" name="password" placeholder="Input Nama Password" class="form-control" value="<?= $data['password'] ?>">
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label>Hak Akses</label>
+                                <select class="form-control" name="hak">
+                                    <option value="<?= $data['hak'] ?>">--Pilih--</option>
+                                    <option value="Admin">Admin</option>
+                                    <option value="Petugas">Petugas</option>
                                 </select>
-                            </div>
-
-                            <div class="form-group mb-3">
-                                <label>Stock</label>
-                                <input type="text" name="stock" placeholder="Input Stock" class="form-control" value="<?= $data['stock'] ?>">
-                            </div>
-
-                            <div class="form-group mb-3">
-                                <label>Harga</label>
-                                <input type="text" name="harga" placeholder="Input Harga" class="form-control" value="<?= $data['harga'] ?>">
-                            </div>
-
-                            <div class="form-group mb-3">
-                                <label>Gambar</label>
-                                <input type="file" name="image" class="form-control">
                             </div>
 
                             <hr>
