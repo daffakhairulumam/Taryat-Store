@@ -1,5 +1,4 @@
 <?php
-
 include('function/view-query.php');
 
 $id = $_GET['id'];
@@ -14,12 +13,12 @@ $data = mysqli_fetch_assoc($response);
         <h1>Edit Barang</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="../dashboard/">Home</a></li>
-                <li class="breadcrumb-item"><a href="index.php">Barang</a></li>
+                <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                <li class="breadcrumb-item"><a href="index.php?page=barang">Barang</a></li>
                 <li class="breadcrumb-item active">Edit Barang</li>
             </ol>
         </nav>
-    </div><!--end page title-->
+    </div><!-- End Page Title -->
 
     <section class="section">
         <div class="row">
@@ -53,19 +52,16 @@ $data = mysqli_fetch_assoc($response);
                         ?>
                         <h5 class="card-title">Edit Barang</h5>
 
-                        <form action="logic/barang/update.php" method="post" enctype="multipart/form-data">
-                            <div class="form-group mb-3">
-                                <input type="hidden" name="id" value="<?= $id ?>">
-                            </div>
-
+                        <form action="logic/barang/update.php" method="POST" enctype="multipart/form-data">
                             <div class="form-group mb-3">
                                 <label>Kode Barang</label>
-                                <input type="text" name="kode_barang" placeholder="Input Kode Barang" class="form-control" value="<?= $data['kode_barang'] ?>">
+                                <input type="hidden" name="id" value="<?= $data['id']; ?>">
+                                <input type="text" name="kode_barang" placeholder="Input Kode" class="form-control" value="<?= $data['kode_barang']; ?>" readonly>
                             </div>
 
                             <div class="form-group mb-3">
                                 <label>Nama Barang</label>
-                                <input type="text" name="nama_barang" placeholder="Input Nama Barang" class="form-control" value="<?= $data['nama_barang'] ?>">
+                                <input type="text" name="nama_barang" placeholder="Input Nama Barang" class="form-control" value="<?= $data['nama_barang']; ?>">
                             </div>
 
                             <div class="form-group mb-3">
@@ -79,13 +75,13 @@ $data = mysqli_fetch_assoc($response);
                             </div>
 
                             <div class="form-group mb-3">
-                                <label>Stock</label>
-                                <input type="text" name="stock" placeholder="Input Stock" class="form-control" value="<?= $data['stock'] ?>">
+                                <label>Harga</label>
+                                <input type="text" name="harga" placeholder="Input Harga" class="form-control" value="<?= $data['harga']; ?>">
                             </div>
 
                             <div class="form-group mb-3">
-                                <label>Harga</label>
-                                <input type="text" name="harga" placeholder="Input Harga" class="form-control" value="<?= $data['harga'] ?>">
+                                <label>Stok</label>
+                                <input type="text" name="stock" placeholder="Input Stok" class="form-control" value="<?= $data['stock']; ?>">
                             </div>
 
                             <div class="form-group mb-3">
@@ -105,4 +101,4 @@ $data = mysqli_fetch_assoc($response);
             </div>
         </div>
     </section>
-</main>
+</main><!-- End #main -->

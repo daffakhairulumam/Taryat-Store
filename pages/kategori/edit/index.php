@@ -18,8 +18,8 @@ $data = mysqli_fetch_array($result);
         <h1>Edit Kategori</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="../dashboard/">Home</a></li>
-                <li class="breadcrumb-item"><a href="index.php">Kategori</a></li>
+                <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                <li class="breadcrumb-item"><a href="index.php?page=kategori">Kategori</a></li>
                 <li class="breadcrumb-item active">Edit Kategori</li>
             </ol>
         </nav>

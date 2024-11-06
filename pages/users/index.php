@@ -4,7 +4,7 @@
         <h1>Mobil</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="index.php">Home</a></li>
                 <li class="breadcrumb-item active">Users</li>
             </ol>
         </nav>
@@ -94,7 +94,7 @@
                                                 </button>
                                             </a>
                                             <a href="logic/users/delete.php?id=<?= $value['id'] ?>" onclick="javascript:return confirm('Hapus Data Barang ?');">
-                                                <button type="button" class="btn btn-primary">
+                                                <button type="button" class="btn btn-danger">
                                                     Hapus
                                                 </button>
                                             </a>

@@ -7,7 +7,7 @@ $conn = connection();
 $id = $_POST['id'];
 $nama = $_POST['nama'];
 $user = $_POST['username'];
-$pass = $_POST['password'];
+$pass = md5($_POST['password']);
 $hak = $_POST['hak'];
 
 $sql = "UPDATE users SET nama = '$nama', username = '$user', password = '$pass',  hak = '$hak' WHERE id = '$id'";

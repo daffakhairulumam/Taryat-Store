@@ -1,22 +1,21 @@
 <?php
-
 include('function/view-query.php');
 
-$CodeBarang = genereteCodeBarang();
+$codeBarang = genereteCodeBarang();
 $categoryOptions = getCategory(null);
-
 ?>
+
 <main id="main" class="main">
     <div class="pagetitle">
-        <h1>Tambah Mobil</h1>
+        <h1>Tambah Barang</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="../dashboard">Home</a></li>
+                <li class="breadcrumb-item"><a href="index.php">Home</a></li>
                 <li class="breadcrumb-item"><a href="index.php?page=barang">Barang</a></li>
                 <li class="breadcrumb-item active">Tambah Barang</li>
             </ol>
         </nav>
-    </div><!--end page title-->
+    </div><!-- End Page Title -->
 
     <section class="section">
         <div class="row">
@@ -50,15 +49,10 @@ $categoryOptions = getCategory(null);
                         ?>
                         <h5 class="card-title">Tambah Barang</h5>
 
-                        <form action="logic/barang/save.php" method="post" class="" enctype="multipart/form-data">
-
-                            <div class="form-group mb-3">
-                                <input type="hidden" name="id" placeholder="Input ID" class="form-control">
-                            </div>
-
+                        <form action="logic/barang/save.php" method="POST" enctype="multipart/form-data">
                             <div class="form-group mb-3">
                                 <label>Kode Barang</label>
-                                <input type="text" name="kode_barang" placeholder="Input Kode Barang" class="form-control" value="<?= $CodeBarang ?>">
+                                <input type="text" name="kode_barang" placeholder="Input Kode" class="form-control" value="<?= $codeBarang; ?>" readonly>
                             </div>
 
                             <div class="form-group mb-3">
@@ -77,10 +71,10 @@ $categoryOptions = getCategory(null);
                                     ?>
                                 </select>
                             </div>
-
+                            
                             <div class="form-group mb-3">
-                                <label>Stock</label>
-                                <input type="text" name="stock" placeholder="Input Stock" class="form-control">
+                                <label>Stok</label>
+                                <input type="text" name="stok" placeholder="Input Stok" class="form-control">
                             </div>
 
                             <div class="form-group mb-3">
@@ -105,4 +99,4 @@ $categoryOptions = getCategory(null);
             </div>
         </div>
     </section>
-</main>
+</main><!-- End #main -->

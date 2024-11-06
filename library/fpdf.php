@@ -1768,7 +1768,7 @@ class FPDF
 		$this->_putcatalog();
 		$this->_put('>>');
 		$this->_put('endobj');
-		// Cross-ref
+		// Cross-refs
 		$offset = $this->_getoffset();
 		$this->_put('xref');
 		$this->_put('0 ' . ($this->n + 1));

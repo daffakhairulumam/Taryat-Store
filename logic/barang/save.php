@@ -7,8 +7,8 @@ $conn = connection();
 $kodeKategori = $_POST['kode_kategori'];
 $kodeBarang = $_POST['kode_barang'];
 $namaBarang = $_POST['nama_barang'];
-$stock = $_POST['stock'];
 $harga = $_POST['harga'];
+$stock = $_POST['stok'];
 
 //upload gambar 
 
@@ -19,7 +19,7 @@ $ukuran = $_FILES['image']['size'];
 $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
 if (!in_array($ext, $ekstensi)) {
-    header("Location: ../../index.php?page=barang/create&alert=gagal_ektesnsi");
+    header("location: ../../index.php?page=barang/create&alert=gagal_ekstensi");
 } else {
     if ($ukuran < 1044070) {
         $xx = $rand . '_' . $filename;
@@ -28,11 +28,11 @@ if (!in_array($ext, $ekstensi)) {
         $sql = "INSERT INTO barang (kode_kategori, kode_barang, nama_barang, stock, harga, images) VALUES ('$kodeKategori', '$kodeBarang', '$namaBarang', '$stock', '$harga', '$xx')";
 
         if (mysqli_query($conn, $sql)) {
-            header("Location: ../../index.php?page=barang&alert=berhasil");
+            header("location: ../../index.php?page=barang&alert=berhasil");
         } else {
-            header("Location: ../../index.php?page=barang/create&alert=gagal");
+            header("location: ../../index.php?page=barang/create&alert=gagal");
         }
     } else {
-        header("Location: ../../index.php?page=barang/create&alert=gagal_ukuran");
+        header("location: ../../index.php?page=barang/create&alert=gagal_ukuran");
     }
 }

@@ -127,17 +127,16 @@ function updateStock($kodeBarang, $qty)
 
 function saveTransaksi($data)
 {
-
     $conn = connection();
 
-    $idTransaksi = $data['id_transaksi'];
+    $id_transaksi = $data['id_transaksi'];
     $total = $_POST['total'];
-    $bayar = $_POST['bayar'];
+    $totalBayar = $_POST['bayar'];
 
-    $keranjang = "SELECT * FROM keranjang WHERE id_transaksi = '$idTransaksi'";
+    $keranjang = "SELECT * FROM keranjang WHERE id_transaksi = '$id_transaksi'";
     $resultKeranjang = mysqli_query($conn, $keranjang);
 
-    $query = "INSERT INTO headtrans (id_transaksi, tanggal_transaksi, total, bayar) VALUES ('$idTransaksi', now(), '$total', '$bayar')";
+    $query = "INSERT INTO headtrans (id_transaksi, total, tanggal_transaksi, total_bayar) VALUES ('$id_transaksi', $total, now(), '$totalBayar')";
     $result = mysqli_query($conn, $query);
 
     foreach ($resultKeranjang as $key => $value) {

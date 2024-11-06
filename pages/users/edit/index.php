@@ -18,8 +18,8 @@ $data = mysqli_fetch_array($result);
         <h1>Tambah Users</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="../dashboard/">Home</a></li>
-                <li class="breadcrumb-item"><a href="index.php">Users</a></li>
+                <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                <li class="breadcrumb-item"><a href="index.php?page=users">Users</a></li>
                 <li class="breadcrumb-item active">Tambah Users</li>
             </ol>
         </nav>

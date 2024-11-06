@@ -60,11 +60,11 @@ if ($page == 'laporan') {
             <i class="bi bi-circle"></i><span>Transaksi Barang</span>
           </a>
         </li>
-        <!-- <li>
+        <li>
           <a href="index.php?page=laporan-transaksi" class="<?php if ($page == 'laporan-transaksi') echo 'active' ?>">
             <i class="bi bi-circle"></i><span>Laporan Transaksi</span>
           </a>
-        </li> -->
+        </li>
       </ul>
     </li><!-- End Master Nav -->
 

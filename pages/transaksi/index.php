@@ -1,5 +1,4 @@
 <?php
-
 include('function/view-query.php');
 
 $data = getBarang();
@@ -66,7 +65,6 @@ if (isset($_GET['kode_barang'])) {
                                 </div>
                             <?php endif; ?>
                         <?php endif; ?>
-
 
                         <div class="row mb-3">
                             <div class="col-lg-6">

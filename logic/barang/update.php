@@ -8,8 +8,8 @@ $id = $_POST['id'];
 $kode_kategori = $_POST['kode_kategori'];
 $kode_barang = $_POST['kode_barang'];
 $namaBarang = $_POST['nama_barang'];
-$stock = $_POST['stock'];
 $harga = $_POST['harga'];
+$stock = $_POST['stock'];
 
 //upload gambar 
 
@@ -20,7 +20,7 @@ $ukuran = $_FILES['image']['size'];
 $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
 if (!in_array($ext, $ekstensi)) {
-    header("Location: ../../index.php?page=barang/edit&id=$id");
+    header("location: ../../index.php?page=barang/edit&id=$id&alert=gagal_ekstensi");
 } else {
     if ($ukuran < 1044070) {
         $xx = $rand . '_' . $filename;
