@@ -46,6 +46,21 @@ $categoryOptions = getCategory(null);
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         <?php }
+                        if (isset($_GET['alert']) && $_GET['alert'] == 'negative_value') { ?>
+                            <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+                                <h4 class="alert-heading">Gagal!</h4>
+                                <p>Harga dan stok tidak boleh bernilai negatif.</p>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        <?php }
+
+                        if (isset($_GET['alert']) && $_GET['alert'] == 'empty_fields') { ?>
+                            <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+                                <h4 class="alert-heading">Gagal!</h4>
+                                <p>Semua field harus diisi.</p>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        <?php }
                         ?>
                         <h5 class="card-title">Tambah Barang</h5>
 
@@ -71,15 +86,15 @@ $categoryOptions = getCategory(null);
                                     ?>
                                 </select>
                             </div>
-                            
+
                             <div class="form-group mb-3">
                                 <label>Stok</label>
-                                <input type="text" name="stok" placeholder="Input Stok" class="form-control">
+                                <input type="number" name="stok" oninput="this.value = this.value < 0 ? 0 : this.value" placeholder="Input Stok" class="form-control">
                             </div>
 
                             <div class="form-group mb-3">
                                 <label>Harga</label>
-                                <input type="text" name="harga" placeholder="Input Harga" class="form-control">
+                                <input type="number" name="harga" oninput="this.value = this.value < 0 ? 0 : this.value" placeholder="Input Harga" class="form-control">
                             </div>
 
                             <div class="form-group mb-3">
