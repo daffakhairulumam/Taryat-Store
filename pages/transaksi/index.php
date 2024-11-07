@@ -152,7 +152,7 @@ if (isset($_GET['kode_barang'])) {
                             <div class="col-lg-3">
                                 <div class="input-group">
                                     <label class="input-group-text">Kembalian</label>
-                                    <input type="text" class="form-control" id="kembalian" readonly>
+                                    <input type="text" id="kembalian" class="form-control" readonly>
                                 </div>
                             </div>
                             <div class="col-lg-3">
@@ -305,6 +305,60 @@ if (isset($_GET['kode_barang'])) {
         $('#modalQty').modal('show');
         $('#id').val(id);
     }
+
+    // function kembalian() {
+    //     var bayar = $('#bayar').val();
+    //     var total = $('#total').val();
+
+    //     // Convert to numbers and handle empty input
+    //     bayar = bayar ? parseFloat(bayar) : 0;
+    //     total = total ? parseFloat(total) : 0;
+
+    //     // Calculate kembalian
+    //     var kembalian = bayar - total;
+
+    //     // Check if payment is less than total
+    //     if ($('.invalid-feedback').length === 0) {
+    //         $('#kembalian').val('');
+    //         // Tambahkan class warning pada input bayar
+    //         $('#bayar').addClass('is-invalid');
+    //         // Tampilkan pesan warning
+    //         $('#bayar').after('<div class="invalid-feedback">Uang pembayaran kurang!</div>');
+    //     } else {
+    //         // Hapus class warning dan pesan
+    //         $('#bayar').removeClass('is-invalid');
+    //         $('.invalid-feedback').remove();
+    //         // Set nilai kembalian
+    //         $('#kembalian').val(kembalian);
+    //     }
+    // }
+
+    // function bayar() {
+    //     var bayar = $('#bayar').val();
+    //     var total = $('#total').val();
+    //     var idTransaksi = $('#id_transaksi').val();
+
+    //     // Convert to numbers
+    //     bayar = parseFloat(bayar);
+    //     total = parseFloat(total);
+
+    //     if (total <= 0) {
+    //         alert('Total Belanja Harus Lebih Besar dari 0');
+    //         return false;
+    //     }
+
+    //     if (bayar < total) {
+    //         alert('Uang Anda Kurang');
+    //     } else {
+    //         var kembalian = bayar - total;
+    //         $('#modalBayar').modal('show');
+    //         $('#id_transaksi2').val(idTransaksi);
+    //         $('#total2').val(total);
+    //         $('#bayar2').val(bayar);
+    //         $('#kembalian2').val(kembalian);
+    //     }
+    // }
+
 
     function kembalian() {
         var bayar = $('#bayar').val();
