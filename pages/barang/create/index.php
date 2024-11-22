@@ -61,6 +61,13 @@ $categoryOptions = getCategory(null);
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         <?php }
+                        if (isset($_GET['alert']) && $_GET['alert'] == 'invalid_price') { ?>
+                            <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+                                <h4 class="alert-heading">Gagal!</h4>
+                                <p>Harga harus lebih besar dari 0.</p>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        <?php }
                         ?>
                         <h5 class="card-title">Tambah Barang</h5>
 
@@ -94,7 +101,7 @@ $categoryOptions = getCategory(null);
 
                             <div class="form-group mb-3">
                                 <label>Harga</label>
-                                <input type="number" name="harga" oninput="this.value = this.value < 0 ? 0 : this.value" placeholder="Input Harga" class="form-control">
+                                <input type="number" name="harga" oninput="validatePrice(this)" min="1" placeholder="Input Harga" class="form-control">
                             </div>
 
                             <div class="form-group mb-3">
@@ -115,3 +122,15 @@ $categoryOptions = getCategory(null);
         </div>
     </section>
 </main><!-- End #main -->
+
+<script>
+    function validatePrice(input) {
+        // Hapus angka 0 di depan
+        input.value = input.value.replace(/^0+/, '');
+
+        // Jika nilai kurang dari 1, set ke kosong
+        if (input.value <= 0) {
+            input.value = '';
+        }
+    }
+</script>

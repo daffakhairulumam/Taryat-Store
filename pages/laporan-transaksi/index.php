@@ -25,6 +25,17 @@ $data = getTransaksi();
                     <div class="card-body">
                         <h5 class="card-title">Laporan Transaksi</h5>
 
+                        <div class="row mb-3">
+                            <div class="col-md-3">
+                                <label class="form-label">Tanggal Awal</label>
+                                <input type="date" id="min" name="min" class="form-control">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Tanggal Akhir</label>
+                                <input type="date" id="max" name="max" class="form-control">
+                            </div>
+                        </div>
+
                         <!-- Table with stripped rows -->
                         <table id="table-transaksi">
                             <thead>
@@ -69,6 +80,38 @@ $data = getTransaksi();
 
 <script>
     $(document).ready(function() {
-        $('#table-transaksi').DataTable();
-    })
+        // Inisialisasi DataTable
+        var table = $('#table-transaksi').DataTable();
+
+        // Filter rentang tanggal
+        $.fn.dataTable.ext.search.push(
+            function(settings, data, dataIndex) {
+                var min = $('#min').val();
+                var max = $('#max').val();
+                // Index kolom tanggal (sesuaikan dengan struktur tabel Anda)
+                var dateColumn = data[3];
+
+                if (min === '' && max === '') return true;
+
+                // Konversi string tanggal ke format yang bisa dibandingkan
+                var date = new Date(dateColumn);
+                var minDate = new Date(min);
+                var maxDate = new Date(max);
+
+                if (min && max) {
+                    return date >= minDate && date <= maxDate;
+                } else if (min) {
+                    return date >= minDate;
+                } else if (max) {
+                    return date <= maxDate;
+                }
+                return true;
+            }
+        );
+
+        // Event listener untuk perubahan input tanggal
+        $('#min, #max').on('change', function() {
+            table.draw();
+        });
+    });
 </script>

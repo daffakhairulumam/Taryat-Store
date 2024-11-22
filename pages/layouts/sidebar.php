@@ -48,7 +48,8 @@ if ($page == 'laporan') {
           </a>
         </li>
       </ul>
-    </li><!-- End Master Nav -->
+    </li>
+    <!-- End Master Nav -->
 
     <li class="nav-item">
       <a class="nav-link collapsed" data-bs-target="#transaksi-nav" data-bs-toggle="collapse" href="#">

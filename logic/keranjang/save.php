@@ -11,7 +11,7 @@ $data = [
 ];
 
 if (saveKeranjang($data)) {
-    header("Location:../../index.php?page=transaksi&alert=berhasil&kode_barang=$codeBarang");
+    header("Location:../../index.php?page=transaksi&alert=berhasil&kode_barang=$kodeBarang");
 } else {
     header("Location:../../index.php?page=transaksi&alert=gagal");
 }

@@ -7,7 +7,9 @@ $conn = connection();
 $kodeKategori = $_POST['kode_kategori'];
 $kodeBarang = $_POST['kode_barang'];
 $namaBarang = $_POST['nama_barang'];
-$harga = $_POST['harga'];
+if ($_POST['harga'] <= 0) {
+    header("location:../../index.php?page=barang&alert=harga_harus_lebih_dari_0");
+}
 $stock = $_POST['stok'];
 
 //upload gambar 
