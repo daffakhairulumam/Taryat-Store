@@ -110,9 +110,9 @@ if (isset($_GET['kode_barang'])) {
                                             <td><?= $key + 1 ?></td>
                                             <td><?= $value['kode_barang'] ?></td>
                                             <td><?= $value['nama_barang'] ?></td>
-                                            <td><?= $value['harga'] ?></td>
+                                            <!-- <td><?= $value['harga'] ?></td> -->
                                             <td>Rp.<?= number_format($value['harga'], 0, ',', '.') ?></td>
-                                            <!-- <td><?= $value['qty'] ?></td> -->
+                                            <td><?= $value['qty'] ?></td>
                                             <!-- <td><?= $value['total'] ?></td> -->
                                             <td>Rp.<?= number_format($value['total'], 0, ',', '.') ?></td>
                                             <td>

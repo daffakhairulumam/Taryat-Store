@@ -33,11 +33,6 @@ if ($page == 'dashboard') {
             <i class="bi bi-circle"></i><span>Barang</span>
           </a>
         </li>
-        <li>
-          <a href="index.php?page=users" class="<?php if ($page == 'users') echo 'active' ?>">
-            <i class="bi bi-circle"></i><span>Users</span>
-          </a>
-        </li>
       </ul>
     </li><!-- End Master Nav -->
 
